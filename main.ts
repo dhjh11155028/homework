@@ -690,11 +690,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         B = 1
         controller.moveSprite(mySprite, 0, 0)
         if (方向 == 0) {
-            if (controller.left.isPressed()) {
-                L前翻()
-            } else {
-                L後翻()
-            }
+            L前翻()
         } else {
             if (controller.right.isPressed()) {
                 R前翻()
@@ -1202,7 +1198,7 @@ function L前翻 () {
         ........................
         `)
     mySprite.x += -1
-    pause(44)
+    pause(33)
     mySprite.setImage(img`
         ..........fff...........
         .......fffffef..........
@@ -1232,7 +1228,7 @@ function L前翻 () {
     mySprite.x += -1
     mySprite.x += -1
     mySprite.x += -1
-    pause(44)
+    pause(33)
     mySprite.setImage(img`
         ............fff.........
         .........fffffef........
@@ -1264,7 +1260,7 @@ function L前翻 () {
     mySprite.x += -1
     mySprite.x += -1
     mySprite.x += -1
-    pause(44)
+    pause(33)
     mySprite.setImage(img`
         ...............fff......
         ...........ffffffefff...
@@ -1297,8 +1293,7 @@ function L前翻 () {
     mySprite.x += -1
     mySprite.x += -1
     mySprite.x += -1
-    mySprite.x += -1
-    pause(44)
+    pause(33)
     mySprite.setImage(img`
         ..............ffffff....
         .............f2feeeeff..
@@ -1325,7 +1320,14 @@ function L前翻 () {
         ........................
         ........................
         `)
-    pause(44)
+    mySprite.x += -1
+    mySprite.x += -1
+    mySprite.x += -1
+    mySprite.x += -1
+    pause(33)
+    mySprite.x += -1
+    mySprite.x += -1
+    mySprite.x += -1
     mySprite.setImage(img`
         ...............fff......
         ...........ffffffefff...
@@ -1352,7 +1354,7 @@ function L前翻 () {
         ........................
         ........................
         `)
-    pause(44)
+    pause(33)
     mySprite.setImage(img`
         ..........fff...........
         .......fffffef..........
@@ -1381,9 +1383,7 @@ function L前翻 () {
         `)
     mySprite.x += -1
     mySprite.x += -1
-    mySprite.x += -1
-    mySprite.x += -1
-    pause(44)
+    pause(33)
     mySprite.setImage(img`
         ..............ffffff....
         .............f2feeeeff..
@@ -1411,8 +1411,7 @@ function L前翻 () {
         ........................
         `)
     mySprite.x += -1
-    mySprite.x += -1
-    pause(44)
+    pause(33)
 }
 function L後翻 () {
     mySprite.setImage(img`
@@ -1442,7 +1441,7 @@ function L後翻 () {
         ........................
         `)
     mySprite.x += 1
-    pause(32)
+    pause(24)
     mySprite.setImage(img`
         ..............ffffff....
         .............f2feeeeff..
@@ -1471,7 +1470,7 @@ function L後翻 () {
         `)
     mySprite.x += 1
     mySprite.x += 1
-    pause(32)
+    pause(24)
     mySprite.setImage(img`
         ..............ffffff....
         .............f2feeeeff..
@@ -1500,7 +1499,7 @@ function L後翻 () {
         `)
     mySprite.x += 1
     mySprite.x += 1
-    pause(32)
+    pause(24)
     mySprite.setImage(img`
         ..............ffffff....
         .............f2feeeeff..
@@ -1530,7 +1529,7 @@ function L後翻 () {
     mySprite.x += 1
     mySprite.x += 1
     mySprite.x += 1
-    pause(32)
+    pause(24)
     mySprite.setImage(img`
         ..............ffffff....
         .............f2feeeeff..
@@ -1562,7 +1561,7 @@ function L後翻 () {
     mySprite.x += 1
     mySprite.x += 1
     mySprite.x += 1
-    pause(32)
+    pause(24)
     mySprite.setImage(img`
         ............fff.ffff....
         ...........fffffef2eff..
@@ -1594,7 +1593,7 @@ function L後翻 () {
     mySprite.x += 1
     mySprite.x += 1
     mySprite.x += 1
-    pause(32)
+    pause(24)
     mySprite.setImage(img`
         .................fff....
         ...............ff2ddef..
@@ -1625,7 +1624,7 @@ function L後翻 () {
     mySprite.x += 1
     mySprite.x += 1
     mySprite.x += 1
-    pause(32)
+    pause(24)
     mySprite.setImage(img`
         ...............fff......
         ...........ffffffefff...
@@ -1655,7 +1654,7 @@ function L後翻 () {
     mySprite.x += 1
     mySprite.x += 1
     mySprite.x += 1
-    pause(32)
+    pause(24)
     mySprite.setImage(img`
         ...............ff.......
         .............ff2ffff....
@@ -1684,7 +1683,7 @@ function L後翻 () {
         `)
     mySprite.x += 1
     mySprite.x += 1
-    pause(32)
+    pause(24)
     mySprite.setImage(img`
         .............f2fffff....
         ...........ff22eeeeeff..
@@ -1712,7 +1711,7 @@ function L後翻 () {
         ........................
         `)
     mySprite.x += 1
-    pause(32)
+    pause(24)
     mySprite.setImage(img`
         ..............ffffff....
         .............f2feeeeff..
@@ -1740,7 +1739,7 @@ function L後翻 () {
         ........................
         `)
     mySprite.x += 1
-    pause(32)
+    pause(24)
 }
 let myEnemy: Sprite = null
 let B_CD = 0
@@ -1782,15 +1781,6 @@ mySprite = sprites.create(img`
 mySprite.setPosition(5, 80)
 controller.moveSprite(mySprite, 100, 100)
 關卡(1)
-forever(function () {
-    if (B_CD > 0) {
-        B_CD += -1
-    }
-    if (A_CD > 0) {
-        A_CD += -1
-    }
-    pause(1000)
-})
 forever(function () {
     if ((controller.left.isPressed() || controller.right.isPressed()) && (A == 0 && B == 0)) {
         if (controller.left.isPressed()) {
@@ -1851,4 +1841,13 @@ forever(function () {
             方向 = 1
         }
     }
+})
+forever(function () {
+    if (B_CD > 0) {
+        B_CD += -1
+    }
+    if (A_CD > 0) {
+        A_CD += -1
+    }
+    pause(1000)
 })
