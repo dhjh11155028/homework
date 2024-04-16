@@ -11,13 +11,14 @@
         "README.md",
         "assets.json",
         "images.g.jres",
-        "images.g.ts"
+        "images.g.ts",
+        "main.py"
     ],
     "testFiles": [
         "test.ts"
     ],
     "targetVersions": {
-        "target": "1.12.49",
+        "target": "1.12.51",
         "targetId": "arcade"
     },
     "supportedTargets": [
