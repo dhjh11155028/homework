@@ -2691,14 +2691,6 @@ forever(function () {
     pauseUntil(() => 關卡數 != 關卡數變化)
 })
 forever(function () {
-    if (教程分類 == 0 && (controller.up.isPressed() || (controller.right.isPressed() || (controller.down.isPressed() || controller.left.isPressed())))) {
-        教程 = 1
-    }
-    if (教程分類 == 3 && controller.B.isPressed()) {
-        教程4 = 1
-    }
-})
-forever(function () {
     if ((controller.left.isPressed() || controller.right.isPressed()) && (A == 0 && B == 0)) {
         if (controller.left.isPressed()) {
             mySprite.setImage(img`
@@ -2767,4 +2759,12 @@ forever(function () {
         A_CD += -1
     }
     pause(1000)
+})
+forever(function () {
+    if (教程分類 == 0 && (controller.up.isPressed() || (controller.right.isPressed() || (controller.down.isPressed() || controller.left.isPressed())))) {
+        教程 = 1
+    }
+    if (教程分類 == 3 && controller.B.isPressed()) {
+        教程4 = 1
+    }
 })
