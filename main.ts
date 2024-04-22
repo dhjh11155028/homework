@@ -905,10 +905,32 @@ function 新手教程 () {
     story.spriteSayText(teacer, "已經來不急解釋了", 15, 1, story.TextSpeed.Fast)
     story.spriteSayText(teacer, "我現在得教會你所有技能", 15, 1, story.TextSpeed.Fast)
     story.spriteSayText(teacer, "首先最基礎的", 15, 1, story.TextSpeed.VeryFast)
-    while (!(教程 == 1)) {
-        story.spriteSayText(teacer, "你先試試看移動上下左右", 15, 1, story.TextSpeed.Fast)
+    story.spriteSayText(teacer, "你先試試看移動上下左右", 15, 1, story.TextSpeed.VeryFast)
+    while (教程 != 1) {
+        story.spriteSayText(teacer, "你先試試看移動上下左右", 15, 1, story.TextSpeed.VeryFast)
     }
     story.spriteSayText(teacer, "做得很好", 15, 1, story.TextSpeed.Fast)
+    教程分類 = 1
+    story.spriteSayText(teacer, "接著是普通攻擊", 15, 1, story.TextSpeed.VeryFast)
+    story.spriteSayText(teacer, "點擊[A]建並迅速開", 15, 1, story.TextSpeed.VeryFast)
+    while (教程2 != 1) {
+        story.spriteSayText(teacer, "點擊[A]鍵並迅速鬆開", 15, 1, story.TextSpeed.VeryFast)
+    }
+    story.spriteSayText(teacer, "做得很好", 15, 1, story.TextSpeed.Fast)
+    教程分類 = 2
+    story.spriteSayText(teacer, "現在是特殊攻擊", 15, 1, story.TextSpeed.VeryFast)
+    story.spriteSayText(teacer, "長按[A]鍵完成蓄力並鬆開", 15, 1, story.TextSpeed.VeryFast)
+    while (教程3 != 1) {
+        story.spriteSayText(teacer, "長按[A]鍵完成蓄力並鬆開", 15, 1, story.TextSpeed.VeryFast)
+    }
+    story.spriteSayText(teacer, "做得很好", 15, 1, story.TextSpeed.Fast)
+    教程分類 = 3
+    story.spriteSayText(teacer, "最後是翻滾", 15, 1, story.TextSpeed.Fast)
+    story.spriteSayText(teacer, "在翻滾途中可以免疫傷害", 15, 1, story.TextSpeed.Fast)
+    story.spriteSayText(teacer, "不同的方向和移動可觸發不同的翻滾", 15, 1, story.TextSpeed.Fast)
+    while (教程3 != 1) {
+        story.spriteSayText(teacer, "長按[A]鍵完成蓄力並鬆開", 15, 1, story.TextSpeed.VeryFast)
+    }
 }
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     if (B_CD == 0) {
@@ -1241,6 +1263,9 @@ controller.A.onEvent(ControllerButtonEvent.Released, function () {
                 . . . . . . . . . . . . . . . . 
                 `, mySprite, 100, 0)
         }
+        if (教程分類 == 2) {
+            教程3 = 1
+        }
     } else {
         if (方向 == 0) {
             animation.runImageAnimation(
@@ -1456,6 +1481,9 @@ controller.A.onEvent(ControllerButtonEvent.Released, function () {
             120,
             false
             )
+        }
+        if (教程分類 == 1) {
+            教程2 = 1
         }
         A_CD = 1
         pause(320)
@@ -2601,6 +2629,8 @@ function L後翻 () {
 let myEnemy: Sprite = null
 let projectile: Sprite = null
 let B_CD = 0
+let 教程3 = 0
+let 教程2 = 0
 let teacer: Sprite = null
 let a_type = 0
 let A_CD = 0
@@ -2610,6 +2640,8 @@ let B = 0
 let A = 0
 let A_蓄力 = 0
 let 教程 = 0
+let 教程分類 = 0
+教程分類 = 0
 教程 = 0
 A_蓄力 = 0
 A = 0
@@ -2650,6 +2682,11 @@ forever(function () {
         關卡(關卡數)
     }
     pauseUntil(() => 關卡數 != 關卡數變化)
+})
+forever(function () {
+    if (教程分類 == 0 && (controller.up.isPressed() || (controller.right.isPressed() || (controller.down.isPressed() || controller.left.isPressed())))) {
+        教程 = 1
+    }
 })
 forever(function () {
     if ((controller.left.isPressed() || controller.right.isPressed()) && (A == 0 && B == 0)) {
