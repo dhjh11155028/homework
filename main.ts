@@ -927,10 +927,16 @@ function 新手教程 () {
     教程分類 = 3
     story.spriteSayText(teacer, "最後是翻滾", 15, 1, story.TextSpeed.Fast)
     story.spriteSayText(teacer, "在翻滾途中可以免疫傷害", 15, 1, story.TextSpeed.Fast)
-    story.spriteSayText(teacer, "不同的方向和移動可觸發不同的翻滾", 15, 1, story.TextSpeed.Fast)
+    story.spriteSayText(teacer, "不同方向和移動", 15, 1, story.TextSpeed.Normal)
+    story.spriteSayText(teacer, "觸發不同的翻滾", 15, 1, story.TextSpeed.Normal)
+    story.spriteSayText(teacer, "按下[B]鍵以翻滾", 15, 1, story.TextSpeed.VeryFast)
     while (教程3 != 1) {
-        story.spriteSayText(teacer, "長按[A]鍵完成蓄力並鬆開", 15, 1, story.TextSpeed.VeryFast)
+        story.spriteSayText(teacer, "按下[B]鍵以翻滾", 15, 1, story.TextSpeed.VeryFast)
     }
+    story.spriteSayText(teacer, "做得很好", 15, 1, story.TextSpeed.Fast)
+    story.spriteSayText(teacer, "你已經學會該學的了", 15, 1, story.TextSpeed.Fast)
+    story.spriteSayText(teacer, "剩下的就靠你自己領悟了", 15, 1, story.TextSpeed.Fast)
+    story.spriteSayText(teacer, "去吧", 15, 1, story.TextSpeed.Fast)
 }
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     if (B_CD == 0) {
@@ -1115,7 +1121,6 @@ controller.A.onEvent(ControllerButtonEvent.Released, function () {
             120,
             false
             )
-            A_CD = 1
             pause(320)
             projectile = sprites.createProjectileFromSprite(img`
                 . . 1 . . . . . . . . . . . . . 
@@ -1135,6 +1140,7 @@ controller.A.onEvent(ControllerButtonEvent.Released, function () {
                 . . . . . . . . . . . . . . . . 
                 . . . . . . . . . . . . . . . . 
                 `, mySprite, -100, 0)
+            A_CD = 1
         } else {
             animation.runImageAnimation(
             mySprite,
@@ -1242,7 +1248,6 @@ controller.A.onEvent(ControllerButtonEvent.Released, function () {
             120,
             false
             )
-            A_CD = 1
             pause(320)
             projectile = sprites.createProjectileFromSprite(img`
                 . 1 . . . . . . . . . . . . . . 
@@ -1262,6 +1267,7 @@ controller.A.onEvent(ControllerButtonEvent.Released, function () {
                 . . . . . . . . . . . . . . . . 
                 . . . . . . . . . . . . . . . . 
                 `, mySprite, 100, 0)
+            A_CD = 1
         }
         if (教程分類 == 2) {
             教程3 = 1
@@ -1485,8 +1491,8 @@ controller.A.onEvent(ControllerButtonEvent.Released, function () {
         if (教程分類 == 1) {
             教程2 = 1
         }
-        A_CD = 1
         pause(320)
+        A_CD = 1
     }
     controller.moveSprite(mySprite, 80, 80)
 })
@@ -2626,6 +2632,7 @@ function L後翻 () {
     mySprite.x += 1
     pause(25)
 }
+let 教程4 = 0
 let myEnemy: Sprite = null
 let projectile: Sprite = null
 let B_CD = 0
@@ -2686,6 +2693,9 @@ forever(function () {
 forever(function () {
     if (教程分類 == 0 && (controller.up.isPressed() || (controller.right.isPressed() || (controller.down.isPressed() || controller.left.isPressed())))) {
         教程 = 1
+    }
+    if (教程分類 == 3 && controller.B.isPressed()) {
+        教程4 = 1
     }
 })
 forever(function () {
