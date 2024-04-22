@@ -125,9 +125,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                     }
                 } else {
                     if (方向 == 0) {
-                        animation.runImageAnimation(
-                        mySprite,
-                        [img`
+                        mySprite.setImage(img`
                             ..............ffffff..........
                             .............f2feeeeff........
                             ...........1f222feeeeff.......
@@ -152,7 +150,9 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                             ..............................
                             ..............................
                             ..............................
-                            `,img`
+                            `)
+                        pause(120)
+                        mySprite.setImage(img`
                             ..............ffffff..........
                             .........9...f2feeeeff........
                             ...........9f222feeeeff.......
@@ -177,14 +177,10 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                             ..............................
                             ..............................
                             ..............................
-                            `],
-                        120,
-                        false
-                        )
+                            `)
+                        pause(120)
                     } else {
-                        animation.runImageAnimation(
-                        mySprite,
-                        [img`
+                        mySprite.setImage(img`
                             ...............ffffff.........
                             .............ffeeeef2f........
                             ............ffeeeef222f1......
@@ -209,7 +205,9 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                             ..............................
                             ..............................
                             ..............................
-                            `,img`
+                            `)
+                        pause(120)
+                        mySprite.setImage(img`
                             ...............ffffff.........
                             .............ffeeeef2f...9....
                             ............ffeeeef222f9......
@@ -234,10 +232,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                             ..............................
                             ..............................
                             ..............................
-                            `],
-                        120,
-                        false
-                        )
+                            `)
+                        pause(120)
                     }
                 }
             }
@@ -905,6 +901,14 @@ function R前翻 () {
     mySprite.x += 1
     pause(25)
 }
+function 新手教程 () {
+    story.spriteSayText(teacer, "已經來不急解釋了", 15, 1, story.TextSpeed.Fast)
+    story.spriteSayText(teacer, "我現在得教會你所有技能", 15, 1, story.TextSpeed.Fast)
+    story.spriteSayText(teacer, "首先最基礎的", 15, 1, story.TextSpeed.VeryFast)
+    story.spriteSayText(teacer, "你先試試看移動上下左右", 15, 1, story.TextSpeed.Fast)
+    pauseUntil(() => controller.up.isPressed() || (controller.right.isPressed() || (controller.down.isPressed() || controller.left.isPressed())))
+    story.spriteSayText(teacer, "做得很好", 15, 1, story.TextSpeed.Fast)
+}
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     if (B_CD == 0) {
         B = 1
@@ -974,7 +978,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
                 ..............................
                 `)
         }
-        controller.moveSprite(mySprite, 100, 100)
+        controller.moveSprite(mySprite, 80, 80)
         B_CD = 3
     }
     B = 0
@@ -1615,6 +1619,8 @@ function 關卡 (關卡數: number) {
         200,
         false
         )
+        pause(200)
+        新手教程()
     } else {
         if (關卡數 == 2) {
             scene.setBackgroundImage(img`
@@ -2592,9 +2598,9 @@ function L後翻 () {
     pause(25)
 }
 let myEnemy: Sprite = null
-let teacer: Sprite = null
 let projectile: Sprite = null
 let B_CD = 0
+let teacer: Sprite = null
 let a_type = 0
 let A_CD = 0
 let mySprite: Sprite = null
