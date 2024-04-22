@@ -4,13 +4,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         a_type = 0
         controller.moveSprite(mySprite, 30, 30)
         while (controller.A.isPressed()) {
-            pause(100)
-            a_type += 0.1
-            if (a_type >= 1) {
+            if (a_type < 1) {
+                pause(100)
+                a_type += 0.1
+            } else {
                 if (方向 == 0) {
-                    animation.runImageAnimation(
-                    mySprite,
-                    [img`
+                    mySprite.setImage(img`
                         ..............ffffff..........
                         .............f2feeeeff........
                         ............f222feeeeff.......
@@ -35,17 +34,19 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                         ..............................
                         ..............................
                         ..............................
-                        `,img`
+                        `)
+                    pause(100)
+                    mySprite.setImage(img`
                         ..............ffffff..........
                         .............f2feeeeff........
-                        ..........1.f222feeeeff.......
+                        ............f222feeeeff.......
                         .......cc...feeeeffeeef.......
                         .......cdc.fe2222eeffff.......
                         .......c1dcf2effff222ef.......
                         ........cddcffeeefffffff......
-                        .......1.1ddce44fbe44eff......
+                        .........1ddce44fbe44eff......
                         ..........cdceddf14d4eef......
-                        ........1.cccdeddd4eeef.......
+                        ..........cccdeddd4eeef.......
                         ...........edd4e44eeff........
                         ............ee442222f.........
                         .............f2e2222f.........
@@ -60,10 +61,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                         ..............................
                         ..............................
                         ..............................
-                        `],
-                    120,
-                    false
-                    )
+                        `)
+                    pause(100)
                     animation.runImageAnimation(
                     mySprite,
                     [img`
@@ -121,9 +120,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                     true
                     )
                 } else {
-                    animation.runImageAnimation(
-                    mySprite,
-                    [img`
+                    mySprite.setImage(img`
                         ...............ffffff.........
                         .............ffeeeef2f........
                         ............ffeeeef222f.......
@@ -148,7 +145,9 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                         ..............................
                         ..............................
                         ..............................
-                        `,img`
+                        `)
+                    pause(100)
+                    mySprite.setImage(img`
                         ...............ffffff.........
                         .............ffeeeef2f........
                         ............ffeeeef222f.1.....
@@ -173,10 +172,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
                         ..............................
                         ..............................
                         ..............................
-                        `],
-                    120,
-                    false
-                    )
+                        `)
+                    pause(100)
                     animation.runImageAnimation(
                     mySprite,
                     [img`
@@ -1081,6 +1078,26 @@ controller.A.onEvent(ControllerButtonEvent.Released, function () {
             120,
             false
             )
+            A_CD = 1
+            pause(320)
+            projectile = sprites.createProjectileFromSprite(img`
+                . 1 . . . . . . . . . . . . . . 
+                . 9 1 . . . . . . . . . . . . . 
+                . . 1 1 . . . . . . . . . . . . 
+                . . 1 1 . . . . . . . . . . . . 
+                . . 1 2 . . . . . . . . . . . . 
+                . 1 1 2 . . . . . . . . . . . . 
+                1 2 1 . . . . . . . . . . . . . 
+                2 1 2 . . . . . . . . . . . . . 
+                . 2 . . . . . . . . . . . . . . 
+                2 . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, mySprite, 100, 0)
         } else {
             animation.runImageAnimation(
             mySprite,
@@ -1188,27 +1205,27 @@ controller.A.onEvent(ControllerButtonEvent.Released, function () {
             120,
             false
             )
+            A_CD = 1
+            pause(320)
+            projectile = sprites.createProjectileFromSprite(img`
+                . . 1 . . . . . . . . . . . . . 
+                . 1 9 . . . . . . . . . . . . . 
+                1 1 . . . . . . . . . . . . . . 
+                1 1 . . . . . . . . . . . . . . 
+                2 1 . . . . . . . . . . . . . . 
+                2 1 1 . . . . . . . . . . . . . 
+                . 1 2 1 . . . . . . . . . . . . 
+                . 2 1 2 . . . . . . . . . . . . 
+                . . 2 . . . . . . . . . . . . . 
+                . . . 2 . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                `, mySprite, -100, 0)
         }
-        A_CD = 1
-        pause(320)
-        projectile = sprites.createProjectileFromSprite(img`
-            . 1 . . . . . . . . . . . . . . 
-            . 9 1 . . . . . . . . . . . . . 
-            . . 1 1 . . . . . . . . . . . . 
-            . . 1 1 . . . . . . . . . . . . 
-            . . 1 2 . . . . . . . . . . . . 
-            . 1 1 2 . . . . . . . . . . . . 
-            1 2 1 . . . . . . . . . . . . . 
-            2 1 2 . . . . . . . . . . . . . 
-            . 2 . . . . . . . . . . . . . . 
-            2 . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, mySprite, 50, 50)
     } else {
         if (方向 == 0) {
             animation.runImageAnimation(
