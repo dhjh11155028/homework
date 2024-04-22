@@ -905,8 +905,9 @@ function 新手教程 () {
     story.spriteSayText(teacer, "已經來不急解釋了", 15, 1, story.TextSpeed.Fast)
     story.spriteSayText(teacer, "我現在得教會你所有技能", 15, 1, story.TextSpeed.Fast)
     story.spriteSayText(teacer, "首先最基礎的", 15, 1, story.TextSpeed.VeryFast)
-    story.spriteSayText(teacer, "你先試試看移動上下左右", 15, 1, story.TextSpeed.Fast)
-    pauseUntil(() => controller.up.isPressed() || (controller.right.isPressed() || (controller.down.isPressed() || controller.left.isPressed())))
+    while (!(教程 == 1)) {
+        story.spriteSayText(teacer, "你先試試看移動上下左右", 15, 1, story.TextSpeed.Fast)
+    }
     story.spriteSayText(teacer, "做得很好", 15, 1, story.TextSpeed.Fast)
 }
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -2608,6 +2609,8 @@ let 方向 = 0
 let B = 0
 let A = 0
 let A_蓄力 = 0
+let 教程 = 0
+教程 = 0
 A_蓄力 = 0
 A = 0
 B = 0
@@ -2640,7 +2643,14 @@ mySprite = sprites.create(img`
     ..............................
     `, SpriteKind.Player)
 controller.moveSprite(mySprite, 80, 80)
-關卡(1)
+let 關卡數 = 1
+let 關卡數變化 = 關卡數
+forever(function () {
+    if (關卡數 >= 1) {
+        關卡(關卡數)
+    }
+    pauseUntil(() => 關卡數 != 關卡數變化)
+})
 forever(function () {
     if ((controller.left.isPressed() || controller.right.isPressed()) && (A == 0 && B == 0)) {
         if (controller.left.isPressed()) {
