@@ -1912,6 +1912,7 @@ function 關卡 (關卡數: number) {
             `)
         mySprite.setPosition(1, 60)
         pause(6000)
+        召喚殭屍()
     }
     if (關卡數 == 3) {
         scene.setBackgroundImage(img`
@@ -2437,25 +2438,49 @@ function L前翻 () {
     pause(25)
 }
 function 召喚殭屍 () {
-    zombie = sprites.create(img`
-        . . . . f f f f f . . . . . . . 
-        . . . f e e e e e f . . . . . . 
-        . . f d d d d e e e f . . . . . 
-        . c d f d d f d e e f f . . . . 
-        . c d f d d f d e e d d f . . . 
-        c d e e d d d d e e b d c . . . 
-        c d d d d c d d e e b d c . f f 
-        c c c c c d d d e e f c . f e f 
-        . f d d d d d e e f f . . f e f 
-        . . f f f f f e e e e f . f e f 
-        . . . . f e e e e e e e f f e f 
-        . . . f e f f e f e e e e f f . 
-        . . . f e f f e f e e e e f . . 
-        . . . f d b f d b f f e f . . . 
-        . . . f d d c d d b b d f . . . 
-        . . . . f f f f f f f f f . . . 
-        `, SpriteKind.monster)
-    zombie.setPosition(randint(20, 150), randint(20, 110))
+    while (zombie生成數 <= 28) {
+        if (true) {
+            zombie近戰 = sprites.create(img`
+                . . . . f f f f f . . . . . . . 
+                . . . f e e e e e f . . . . . . 
+                . . f d d d d e e e f . . . . . 
+                . c d f d d f d e e f f . . . . 
+                . c d f d d f d e e d d f . . . 
+                c d e e d d d d e e b d c . . . 
+                c d d d d c d d e e b d c . f f 
+                c c c c c d d d e e f c . f e f 
+                . f d d d d d e e f f . . f e f 
+                . . f f f f f e e e e f . f e f 
+                . . . . f e e e e e e e f f e f 
+                . . . f e f f e f e e e e f f . 
+                . . . f e f f e f e e e e f . . 
+                . . . f d b f d b f f e f . . . 
+                . . . f d d c d d b b d f . . . 
+                . . . . f f f f f f f f f . . . 
+                `, SpriteKind.monster)
+            zombie近戰.setPosition(randint(20, 150), randint(20, 110))
+        } else {
+            zombie遠程 = sprites.create(img`
+                . . . . f f f f f . . . . . . . 
+                . . . f e e e e e f . . . . . . 
+                . . f d d d d e e e f . . . . . 
+                . c d f d d f d e e f f . . . . 
+                . c d f d d f d e e d d f . . . 
+                c d e e d d d d e e b d c . . . 
+                c d d d d c d d e e b d c . f f 
+                c c c c c d d d e e f c . f e f 
+                . f d d d d d e e f f . . f e f 
+                . . f f f f f e e e e f . f e f 
+                . . . . f e e e e e e e f f e f 
+                . . . f e f f e f e e e e f f . 
+                . . . f e f f e f e e e e f . . 
+                . . . f d b f d b f f e f . . . 
+                . . . f d d c d d b b d f . . . 
+                . . . . f f f f f f f f f . . . 
+                `, SpriteKind.monster)
+            zombie遠程.setPosition(randint(20, 150), randint(20, 110))
+        }
+    }
 }
 function L後翻 () {
     mySprite.setImage(img`
@@ -2786,7 +2811,8 @@ function L後翻 () {
     pause(25)
 }
 let 教程4 = 0
-let zombie: Sprite = null
+let zombie遠程: Sprite = null
+let zombie近戰: Sprite = null
 let myEnemy: Sprite = null
 let tool: Sprite = null
 let projectile: Sprite = null
@@ -2804,7 +2830,9 @@ let A = 0
 let A_蓄力 = 0
 let 教程 = 0
 let 教程分類 = 0
+let zombie生成數 = 0
 game.splash("")
+zombie生成數 = 0
 教程分類 = 0
 教程 = 0
 A_蓄力 = 0
