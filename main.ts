@@ -1663,7 +1663,6 @@ function 關卡 (關卡數: number) {
         關卡數 = 2
     }
     if (關卡數 == 2) {
-        tiles.setCurrentTilemap(tilemap`層級2`)
         scene.setBackgroundImage(img`
             9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
             9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -1786,8 +1785,9 @@ function 關卡 (關卡數: number) {
             9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
             bbb9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
             `)
+        tiles.setCurrentTilemap(tilemap`層級2`)
         scene.cameraFollowSprite(mySprite)
-        tiles.placeOnTile(mySprite, tiles.getTileLocation(1, 5))
+        tiles.placeOnTile(mySprite, tiles.getTileLocation(1, 4))
         projectile2 = sprites.createProjectileFromSide(img`
             ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
             ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -2302,9 +2302,11 @@ function 關卡 (關卡數: number) {
             ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
             ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
             `, -100, 0)
-        pause(4500)
+        pause(800)
+        召喚殭屍()
     }
     if (關卡數 == 3) {
+        tiles.setCurrentTilemap(tilemap`層級9`)
         scene.setBackgroundImage(img`
             9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
             9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -2428,38 +2430,6 @@ function 關卡 (關卡數: number) {
             7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
             `)
         myEnemy = sprites.create(img`
-            ..................................ff............................
-            .................................fff.......111111......ff.......
-            ................................ffff.....11......111...fff......
-            ................................faff..1111.........111.fff......
-            ................................ffff.11..f......f....11fff......
-            ................................ffff.1..ff......ff...111fffff...
-            ...............................ffffff1..f.ffffff.f...1.1ff.ff...
-            ...............................ffffff1..fff6666fff...1f1ffafff..
-            ..............................ffaff.1f....f6166f.....ff1.fafff..
-            ..............................ffaf..11f...ffffff....ff.1.ffaff..
-            .............................ffaff..111ffffffffffff1f.1..fffff..
-            ...........................ffffaff..1f1f1faaaaaaf1f1f11..fffff..
-            ..........................fffffaff..111fffa1aa1afff11f...fffff..
-            ..........................ffffaaf..ff1ffffaaaaaa1ff11f....ffff..
-            .........................ffffaaff.fff1ffffa1aa1afff1ff....ffaf..
-            .........................fffaa....fff1ffffa1111afff1ffff..ffff..
-            .........................faaaf....fff1.fffff11ffff11.fff..fffff.
-            .........................ff.ff.....ff1.fffffffffffff.faf..f.f.f.
-            ..........................ffff....fff1..fffffffffff..faf..f.fff.
-            ..........................fff.....fff...ffffffffff...faff.fffff.
-            ............................f....ffff...fffffffff...fffaf.ffffff
-            .................................ffff.fffff...fff...fffaf.f.....
-            .................................faf..fff....ffff...fffaf.......
-            ...............................ffaaf..fff....ffff...fffaf.......
-            ...............................faaff..fff....ffff..ffffaf.......
-            ...............................fafff..ffff...ffff..ffffaa.......
-            ...............................fafff.fffff...fffff.fffffa.......
-            ...............................faff..ffff....fffff.fffffaf......
-            ..............................ffaff..ffff....fffff.fffffff......
-            ..............................fffff..ffff....fffff..ffffff......
-            ..............................fffff...................fff.......
-            .................................f..............................
             ................................................................
             ................................................................
             ................................................................
@@ -2476,6 +2446,38 @@ function 關卡 (關卡數: number) {
             ................................................................
             ................................................................
             ................................................................
+            ................................................................
+            ................................................................
+            ................................................................
+            ................................................................
+            ................................................................
+            ................................................................
+            ............................11..................................
+            .........................111f111...ff...........................
+            .........................1..f..11.f.f...........................
+            ........................11..f....1ff.af.........................
+            ........................1ffffff.f11ffafff.......................
+            ........................16666ff.ff1ff.aff.......................
+            .......................1f1666ffff11fffafff......................
+            .......................ffafffffff11faf.aff......................
+            ......................f1fafffffff11faf.aaaf.....................
+            ......................1ffa1fffff11.faff.faff....................
+            ......................1fffafffff1..faaf.faff....................
+            ......................1ffffffff11..f.af..aaf....................
+            .....................ff1fffffff11..faaf..faf....................
+            ...................ffa11fffafff11...aaf..faf....................
+            ..................fffa1..fffffff1....ff..faf....................
+            ..................faaf1..fffaff11.....f..fa.....................
+            .................fafff..fffaa11f.........ffa....................
+            .................fafff..fffaf.ffff..............................
+            .................faff..fffaf..ff.f..............................
+            .................faf...fffaf..ff..f.............................
+            .................faff...ffaf..fff.f.............................
+            .................faaf...ffaf..fff.f.............................
+            ................fffff...ffaffffff.f.............................
+            .................ffff...fffff.fffff.............................
+            .................fffff...ffff.f.fff.............................
+            ..............................f.................................
             ................................................................
             ................................................................
             ................................................................
@@ -2493,7 +2495,14 @@ function 關卡 (關卡數: number) {
             ................................................................
             ................................................................
             `, SpriteKind.Enemy)
-        myEnemy.setPosition(10, 20)
+        myEnemy.setPosition(135, 0)
+        myEnemy.vy = 60
+        pause(800)
+        myEnemy.vy = 0
+        statusbar = statusbars.create(4, 30, StatusBarKind.Health)
+        statusbar.setBarBorder(1, 15)
+        statusbar.setColor(2, 15, 3)
+        statusbar.positionDirection(CollisionDirection.Right)
     }
 }
 function L前翻 () {
@@ -2829,47 +2838,48 @@ function L前翻 () {
 }
 function 召喚殭屍 () {
     while (zombie生成數 <= 28) {
-        if (true) {
+        if (randint(1, 2) == 1) {
             zombie近戰 = sprites.create(img`
-                . . . . f f f f f . . . . . . . 
-                . . . f e e e e e f . . . . . . 
-                . . f d d d d e e e f . . . . . 
-                . c d f d d f d e e f f . . . . 
-                . c d f d d f d e e d d f . . . 
-                c d e e d d d d e e b d c . . . 
-                c d d d d c d d e e b d c . f f 
-                c c c c c d d d e e f c . f e f 
-                . f d d d d d e e f f . . f e f 
-                . . f f f f f e e e e f . f e f 
-                . . . . f e e e e e e e f f e f 
-                . . . f e f f e f e e e e f f . 
-                . . . f e f f e f e e e e f . . 
-                . . . f d b f d b f f e f . . . 
-                . . . f d d c d d b b d f . . . 
-                . . . . f f f f f f f f f . . . 
+                . . . . . . . . . 9 9 9 9 9 9 . 
+                . . . . . . . . . 9 7 7 7 7 7 . 
+                . . . . . . . . . 7 7 7 7 7 9 . 
+                . . . . . . . . . 2 f 7 7 2 f . 
+                . . . . . . . . . 9 7 7 9 9 9 . 
+                . . . . . . . . 8 8 8 8 8 8 8 8 
+                . . . . . . . . 8 8 8 8 8 8 8 8 
+                . . . . . . . . 7 8 8 8 8 8 8 7 
+                . . . . . . . . 7 8 8 8 8 8 8 7 
+                . . . . . . . . . 8 8 8 8 8 8 . 
+                . . . . . . . . . 8 8 8 8 8 8 . 
+                . . . . . . . . . 8 . . . . 8 . 
+                . . . . . . . . . 8 . . . . 8 . 
+                . . . . . . . . . 7 . . . . 9 . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
                 `, SpriteKind.monster)
-            zombie近戰.setPosition(randint(20, 150), randint(20, 110))
+            tiles.placeOnTile(zombie近戰, tiles.getTileLocation(randint(4, 22), randint(3, 7)))
         } else {
             zombie遠程 = sprites.create(img`
-                . . . . f f f f f . . . . . . . 
-                . . . f e e e e e f . . . . . . 
-                . . f d d d d e e e f . . . . . 
-                . c d f d d f d e e f f . . . . 
-                . c d f d d f d e e d d f . . . 
-                c d e e d d d d e e b d c . . . 
-                c d d d d c d d e e b d c . f f 
-                c c c c c d d d e e f c . f e f 
-                . f d d d d d e e f f . . f e f 
-                . . f f f f f e e e e f . f e f 
-                . . . . f e e e e e e e f f e f 
-                . . . f e f f e f e e e e f f . 
-                . . . f e f f e f e e e e f . . 
-                . . . f d b f d b f f e f . . . 
-                . . . f d d c d d b b d f . . . 
-                . . . . f f f f f f f f f . . . 
+                . . . . . . 6 6 6 6 6 6 . . . . 
+                . . . a . . 7 6 7 7 7 7 . . a . 
+                . . 6 . . . 2 1 7 7 2 1 . . . 6 
+                . . 8 . . . 6 7 f f 6 6 . . . 8 
+                . . 7 . . 8 8 8 8 8 1 8 8 . . 7 
+                . . 5 . . 8 8 8 8 8 8 8 8 . . 5 
+                . . 4 . . 7 8 8 8 8 8 8 7 . . 4 
+                . . . 2 . . 8 8 8 8 8 8 . . 2 . 
+                . . . . . . 8 8 8 8 8 8 . . . . 
+                . . . . . . 8 . . . . 8 . . . . 
+                . . . . . 8 8 . . . . 8 . . . . 
+                . . . . . 8 . . . . . 8 . . . . 
+                . . . . . 7 . . . . . 7 . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . . . . 
                 `, SpriteKind.monster)
-            zombie遠程.setPosition(randint(20, 150), randint(20, 110))
+            tiles.placeOnTile(zombie遠程, tiles.getTileLocation(randint(4, 22), randint(3, 7)))
         }
+        zombie生成數 += 1
     }
 }
 function L後翻 () {
@@ -3200,9 +3210,13 @@ function L後翻 () {
     mySprite.x += 1
     pause(25)
 }
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
+    sprites.destroy(projectile)
+})
 let 教程4 = 0
 let zombie遠程: Sprite = null
 let zombie近戰: Sprite = null
+let statusbar: StatusBarSprite = null
 let myEnemy: Sprite = null
 let projectile2: Sprite = null
 let projectile: Sprite = null
@@ -3323,7 +3337,7 @@ forever(function () {
 forever(function () {
     if (關卡數 == 關卡數變化) {
         關卡數變化 += 1
-        關卡(關卡數)
+        關卡(3)
     }
 })
 forever(function () {
