@@ -3337,7 +3337,7 @@ forever(function () {
 forever(function () {
     if (關卡數 == 關卡數變化) {
         關卡數變化 += 1
-        關卡(3)
+        關卡(2)
     }
 })
 forever(function () {
@@ -3355,5 +3355,12 @@ forever(function () {
     }
     if (教程分類 == 3 && controller.B.isPressed()) {
         教程4 = 1
+    }
+})
+forever(function () {
+    if ((zombie近戰.x - mySprite.x) * (zombie近戰.x - mySprite.x) + (zombie近戰.y - mySprite.y) * (zombie近戰.y - mySprite.y) > 2500) {
+        if (true) {
+        	
+        }
     }
 })
